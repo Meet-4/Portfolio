@@ -22,18 +22,6 @@ This repository contains the source for my personal portfolio website. It showca
 
 Below are a few example project entries — replace these with your real projects and links.
 
-### Project One — Project Title
-A short description of the project, tech used, and what problem it solves.
-
-- Demo: (link)
-- Repo: (link)
-
-### Project Two — Project Title
-A short description of the project, tech used, and what problem it solves.
-
-- Demo: (link)
-- Repo: (link)
-
 ## How to run locally
 
 1. Clone the repository
@@ -65,12 +53,6 @@ npx serve .
 
 Potential GitHub Pages URL (if enabled): https://meet-4.github.io/Portfolio/
 
-## Customization / Next steps
-
-- Replace the placeholder project entries with real project descriptions and links.
-- Add screenshots or GIFs in the `assets/` folder and embed them in the project sections.
-- Add a contact form or a link to your email / LinkedIn.
-
 ## Contributing
 
 If you'd like to contribute or suggest changes, open an issue or submit a pull request.
@@ -78,12 +60,12 @@ If you'd like to contribute or suggest changes, open an issue or submit a pull r
 ## Contact
 
 - GitHub: https://github.com/Meet-4
-- Email: (your-email@example.com) — replace with your preferred contact method.
+- Email: sanchaniyameet476@gmail.com 
 
 ## License
 
-This repository is open source. Add a license you prefer (for example, MIT).
+This repository is open source. 
 
 ---
 
-*README created and added by GitHub Copilot.*
+
