@@ -1,73 +1,71 @@
-# Welcome to your Lovable project
+# Meet-4 — Portfolio
 
-## Project info
+Welcome to my portfolio repository. This README gives an overview of the project, how to view and run it locally, and where to find my work. Replace the placeholder sections with details specific to your portfolio.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Overview
 
-## How can I edit this code?
+This repository contains the source for my personal portfolio website. It showcases selected projects, skills, and contact information so visitors and potential employers can learn more about my work.
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+- Clean, responsive portfolio layout
+- Sections for projects, skills, and contact information
+- Easy to deploy to GitHub Pages or any static hosting
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Technologies (examples)
 
-Changes made via Lovable will be committed automatically to this repo.
+- HTML, CSS, JavaScript
+- React / Next.js (if used)
+- Node.js (for development tooling)
 
-**Use your preferred IDE**
+## Projects
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Below are a few example project entries — replace these with your real projects and links.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## How to run locally
 
-Follow these steps:
+1. Clone the repository
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+git clone https://github.com/Meet-4/Portfolio.git
+cd Portfolio
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. If the project uses Node.js (check for package.json):
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm install
+npm start
+# or
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+3. If the project is a static site, open `index.html` in your browser or serve with a simple server:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npx serve .
+```
 
-**Use GitHub Codespaces**
+## Deployment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- To deploy on GitHub Pages, enable Pages in the repository settings and choose the branch (`main`) and folder (`/ (root)` or `docs/`) where the site is built.
+- If you use Vercel, Netlify, or similar, link the repository and follow their deploy steps.
 
-## What technologies are used for this project?
+Potential GitHub Pages URL (if enabled): https://meet-4.github.io/Portfolio/
 
-This project is built with:
+## Contributing
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+If you'd like to contribute or suggest changes, open an issue or submit a pull request.
 
-## How can I deploy this project?
+## Contact
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- GitHub: https://github.com/Meet-4
+- Email: sanchaniyameet476@gmail.com 
 
-## Can I connect a custom domain to my Lovable project?
+## License
 
-Yes, you can!
+This repository is open source. 
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
