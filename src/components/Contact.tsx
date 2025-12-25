@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,26 +10,37 @@ const Contact = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
 
-    // Create mailto link with form data
-    const subject = encodeURIComponent(`Contact from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    const mailtoLink = `mailto:sanchaniyameet476@gmail.com?subject=${subject}&body=${body}`;
+    try {
+      // EmailJS configuration
+      const serviceId = 'service_ji90cvs'; // Your EmailJS service ID
+      const templateId = 'template_depxqje'; // Your EmailJS template ID
+      const publicKey = 'jdqsdossvhpiuegz'; // Your EmailJS public key
 
-    // Open email client
-    window.location.href = mailtoLink;
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'sanchaniyameet476@gmail.com' // Your email
+      };
 
-    // Reset form after a short delay
-    setTimeout(() => {
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      setSubmitStatus('success');
       setFormData({ name: "", email: "", message: "" });
+      
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus('error');
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
