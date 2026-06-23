@@ -1,167 +1,161 @@
-import { 
-  Code2, 
-  Github, 
-  GitBranch, 
-  Cloud, 
-  Database, 
-  Flame, 
-  Wrench, 
-  Globe, 
-  FileCode,
-  Palette,
-  Terminal,
-  Sparkles,
-  Zap,
-  Server,
-  Coffee
+import { motion } from "framer-motion";
+import {
+  Code2, Github, GitBranch, Cloud, Flame, Wrench,
+  Globe, FileCode, Palette, Terminal, Sparkles, Zap,
+  Coffee, Server,
 } from "lucide-react";
 
-const programmingLanguages = [
-  { name: "C", icon: Terminal, color: "text-blue-500", bgColor: "bg-blue-500/10" },
-  { name: "C++", icon: Code2, color: "text-cyan-500", bgColor: "bg-cyan-500/10" },
-  { name: "HTML", icon: FileCode, color: "text-orange-500", bgColor: "bg-orange-500/10" },
-  { name: "CSS", icon: Palette, color: "text-blue-400", bgColor: "bg-blue-400/10" },
-  { name: "JavaScript (ES6+)", icon: Zap, color: "text-yellow-500", bgColor: "bg-yellow-500/10" },
+type Skill = { name: string; icon: React.ElementType; color: string };
+type Category = { id: string; label: string; icon: React.ElementType; color: string; skills: Skill[] };
+
+const categories: Category[] = [
+  {
+    id: "languages",
+    label: "Languages",
+    icon: Terminal,
+    color: "hsl(220 100% 60%)",
+    skills: [
+      { name: "C", icon: Terminal, color: "#3b82f6" },
+      { name: "C++", icon: Code2, color: "#06b6d4" },
+      { name: "HTML5", icon: FileCode, color: "#f97316" },
+      { name: "CSS3", icon: Palette, color: "#60a5fa" },
+      { name: "JavaScript", icon: Zap, color: "#eab308" },
+    ],
+  },
+  {
+    id: "frontend",
+    label: "Frontend",
+    icon: Globe,
+    color: "hsl(160 84% 39%)",
+    skills: [
+      { name: "React.js", icon: Sparkles, color: "#22d3ee" },
+      { name: "Tailwind CSS", icon: Palette, color: "#38bdf8" },
+    ],
+  },
+  {
+    id: "backend",
+    label: "Backend & DB",
+    icon: Server,
+    color: "hsl(32 98% 53%)",
+    skills: [
+      { name: "Node.js", icon: Coffee, color: "#4ade80" },
+      { name: "Firebase", icon: Flame, color: "#fb923c" },
+    ],
+  },
+  {
+    id: "tools",
+    label: "Tools",
+    icon: Wrench,
+    color: "hsl(280 80% 60%)",
+    skills: [
+      { name: "Git", icon: GitBranch, color: "#f97316" },
+      { name: "GitHub", icon: Github, color: "#94a3b8" },
+      { name: "VS Code", icon: Code2, color: "#3b82f6" },
+      { name: "Vercel", icon: Cloud, color: "#e2e8f0" },
+    ],
+  },
 ];
 
-const frontendTechnologies = [
-  { name: "React.js", icon: Sparkles, color: "text-cyan-400", bgColor: "bg-cyan-400/10" },
-  { name: "Tailwind CSS", icon: Palette, color: "text-sky-500", bgColor: "bg-sky-500/10" },
-];
-
-const backendAndDatabase = [
-  { name: "Firebase (Auth, Firestore, Hosting)", icon: Flame, color: "text-orange-400", bgColor: "bg-orange-400/10" },
-  { name: "Node.js", icon: Coffee, color: "text-green-500", bgColor: "bg-green-500/10" },
-];
-
-const toolsAndPlatforms = [
-  { name: "Git", icon: GitBranch, color: "text-orange-600", bgColor: "bg-orange-600/10" },
-  { name: "GitHub", icon: Github, color: "text-gray-300", bgColor: "bg-gray-300/10" },
-  { name: "VS Code", icon: Code2, color: "text-blue-500", bgColor: "bg-blue-500/10" },
-  { name: "Vercel", icon: Cloud, color: "text-black dark:text-white", bgColor: "bg-black/10 dark:bg-white/10" },
-];
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07 } },
+};
+const item = {
+  hidden: { opacity: 0, y: 16, scale: 0.96 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
+};
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 sm:py-32 relative bg-card/30">
-      {/* Background gradient */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      </div>
+    <section id="skills" className="py-28 sm:py-36 relative overflow-hidden">
+      {/* Divider line */}
+      <div className="absolute top-0 left-0 right-0 glow-divider" />
+
+      {/* Bg blob */}
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[hsl(280_80%_60%/0.04)] rounded-full blur-[100px] pointer-events-none" />
 
       <div className="section-container relative">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-primary font-medium text-sm tracking-wider uppercase">Skills & Technologies</span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-2 mb-4">
-            Skills & <span className="gradient-text">Technologies</span>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-16"
+        >
+          <p className="section-label mb-3">What I work with</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+            Skills &{" "}
+            <span className="gradient-text">Technologies</span>
           </h2>
+        </motion.div>
+
+        {/* Category grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {categories.map((cat, ci) => (
+            <motion.div
+              key={cat.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: ci * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="premium-card p-5 flex flex-col gap-5"
+            >
+              {/* Category header */}
+              <div className="flex items-center gap-3">
+                <div
+                  className="p-2.5 rounded-xl"
+                  style={{ background: `${cat.color}15` }}
+                >
+                  <cat.icon size={18} style={{ color: cat.color }} />
+                </div>
+                <span className="text-sm font-semibold text-foreground">{cat.label}</span>
+              </div>
+
+              {/* Skills */}
+              <motion.div
+                variants={container}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="flex flex-col gap-2"
+              >
+                {cat.skills.map((skill) => (
+                  <motion.div
+                    key={skill.name}
+                    variants={item}
+                    whileHover={{ x: 4 }}
+                    className="group flex items-center gap-3 p-2.5 rounded-xl hover:bg-secondary/60 transition-colors cursor-default"
+                  >
+                    <div
+                      className="flex items-center justify-center w-8 h-8 rounded-lg shrink-0 transition-transform group-hover:scale-110 duration-200"
+                      style={{ background: `${skill.color}18` }}
+                    >
+                      <skill.icon size={15} style={{ color: skill.color }} />
+                    </div>
+                    <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                      {skill.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+          ))}
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Programming Languages */}
-          <div className="glow-card">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                <Code2 size={24} />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground">Programming Languages</h3>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {programmingLanguages.map((lang, index) => (
-                <div
-                  key={lang.name}
-                  className="p-3 rounded-xl bg-secondary/50 border border-border/50 hover:border-primary/30 transition-all duration-300 group"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <div className="flex items-center gap-2">
-                    <div className={`p-1.5 rounded-lg ${lang.bgColor} ${lang.color} group-hover:scale-110 transition-transform`}>
-                      <lang.icon size={18} />
-                    </div>
-                    <span className="font-medium text-sm text-foreground">{lang.name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Frontend Technologies */}
-          <div className="glow-card">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-accent/10 text-accent">
-                <Globe size={24} />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground">Frontend Technologies</h3>
-            </div>
-            <div className="grid grid-cols-1 gap-3">
-              {frontendTechnologies.map((tech, index) => (
-                <div
-                  key={tech.name}
-                  className="p-3 rounded-xl bg-secondary/50 border border-border/50 hover:border-accent/30 transition-all duration-300 group"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <div className="flex items-center gap-2">
-                    <div className={`p-1.5 rounded-lg ${tech.bgColor} ${tech.color} group-hover:scale-110 transition-transform`}>
-                      <tech.icon size={18} />
-                    </div>
-                    <span className="font-medium text-sm text-foreground">{tech.name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Backend & Database */}
-          <div className="glow-card">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                <Flame size={24} />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground">Backend & Database</h3>
-            </div>
-            <div className="grid grid-cols-1 gap-3">
-              {backendAndDatabase.map((item, index) => (
-                <div
-                  key={item.name}
-                  className="p-3 rounded-xl bg-secondary/50 border border-border/50 hover:border-primary/30 transition-all duration-300 group"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <div className="flex items-center gap-2">
-                    <div className={`p-1.5 rounded-lg ${item.bgColor} ${item.color} group-hover:scale-110 transition-transform`}>
-                      <item.icon size={18} />
-                    </div>
-                    <span className="font-medium text-sm text-foreground">{item.name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Tools & Platforms */}
-          <div className="glow-card">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-accent/10 text-accent">
-                <Wrench size={24} />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground">Tools & Platforms</h3>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {toolsAndPlatforms.map((tool, index) => (
-                <div
-                  key={tool.name}
-                  className="p-3 rounded-xl bg-secondary/50 border border-border/50 hover:border-accent/30 transition-all duration-300 group"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <div className="flex items-center gap-2">
-                    <div className={`p-1.5 rounded-lg ${tool.bgColor} ${tool.color} group-hover:scale-110 transition-transform`}>
-                      <tool.icon size={18} />
-                    </div>
-                    <span className="font-medium text-sm text-foreground">{tool.name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* Bottom marquee */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="mt-16 overflow-hidden"
+        >
+          <div className="glow-divider mb-8" />
+          <p className="text-center text-xs uppercase tracking-[0.25em] text-muted-foreground/50 font-medium">
+            Always learning · Always building · Always improving
+          </p>
+        </motion.div>
       </div>
     </section>
   );
